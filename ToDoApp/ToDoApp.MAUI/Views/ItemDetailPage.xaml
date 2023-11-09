@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ToDoApp.ViewModels;assembly=ToDoApp"
+             xmlns:views="clr-namespace:ToDoApp.MAUI.Views"
+             x:Class="ToDoApp.Views.ItemDetailPage"
+             x:DataType="vm:ItemDetailViewModel"
+             Title="{Binding Title}">
+
+    <VerticalStackLayout Spacing="20" Padding="15">
+        <Label Text="Text:" FontSize="Medium" />
+        <Label Text="{Binding Text}" FontSize="Small"/>
+        <Label Text="Description:" FontSize="Medium" />
+        <Label Text="{Binding Description}" FontSize="Small"/>
+    </VerticalStackLayout>
+    
+</views:BasePage>

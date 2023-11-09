@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ToDoApp.ViewModels;assembly=ToDoApp"
+             xmlns:views="clr-namespace:ToDoApp.MAUI.Views"
+             x:Class="ToDoApp.Views.NewItemPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="{Binding Title}"
+             x:DataType="vm:NewItemViewModel"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="true">
+        <StackLayout Spacing="3" Padding="15">
+            <Label Text="Text" FontSize="Medium" />
+            <Entry Text="{Binding Text, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="Description" FontSize="Medium" />
+            <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </HorizontalStackLayout>
+        </StackLayout>
+</views:BasePage>

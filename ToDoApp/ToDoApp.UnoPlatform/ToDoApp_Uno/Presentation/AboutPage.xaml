@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="ToDoApp_Uno.Presentation.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:ToDoApp_Uno.Presentation"
+      xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+  <Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <StackPanel Orientation="Vertical" Background="#FFE5B9" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ContentControl Padding="0,20,0,20" VerticalAlignment="Stretch">
+                <Image Source="Assets/Images/xamarinlogo.png" VerticalAlignment="Center" Height="96" />
+            </ContentControl>
+        </StackPanel>
+    </StackPanel>
+
+    
+    <ScrollViewer Grid.Row="1">
+        <StackPanel Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+            <TextBlock Text="Start developing now" FontSize="20" TextWrapping="Wrap"/>
+            <TextBlock Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" TextWrapping="Wrap" FontSize="16" Padding="0,0,0,0"/>
+            <TextBlock FontSize="16" Padding="0,24,0,0" TextWrapping="Wrap">
+                <TextBlock.Inlines>
+                    <Run Text="Learn more at "/>
+                    <Run Text="https://aka.ms/xamarin-quickstart" FontWeight="Bold" />
+                </TextBlock.Inlines>
+            </TextBlock>
+            <Button Margin="0,10,0,0" Content="Learn more"
+                    Command="{Binding OpenWebCommand}"
+                    Background="#512BD4"
+                    Foreground="White" />
+        </StackPanel>
+    </ScrollViewer>
+</Grid>
+
+  
+</UserControl>

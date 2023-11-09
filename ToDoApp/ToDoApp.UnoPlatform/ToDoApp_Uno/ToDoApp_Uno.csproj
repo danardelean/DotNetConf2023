@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>$(TargetFrameworks);net8.0;net8.0-android;net8.0-ios</TargetFrameworks>
+		<TargetFrameworks Condition="'$(OverrideTargetFrameworks)'!=''">$(OverrideTargetFrameworks)</TargetFrameworks>
+		<!-- Ensures the .xr.xml files are generated in a proper layout folder -->
+		<GenerateLibraryLayout>true</GenerateLibraryLayout>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Uno.WinUI" Version="5.0.31" />
+		<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="3.0.11" />
+		<PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="3.0.11" />
+		<PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="3.0.11" />
+		<PackageReference Include="Uno.Extensions.Logging.WinUI" Version="3.0.11" />
+		<PackageReference Include="Uno.Resizetizer" Version="1.2.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0-rc.2.23479.6" />
+		<PackageReference Include="Uno.Toolkit.WinUI" Version="5.0.17" />
+		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="5.0.17" />
+	</ItemGroup>
+	<Choose>
+		<When Condition="$(IsWinAppSdk)">
+			<PropertyGroup>
+				<!--
+        If you encounter this error message:
+
+          error NETSDK1148: A referenced assembly was compiled using a newer version of Microsoft.Windows.SDK.NET.dll.
+          Please update to a newer .NET SDK in order to reference this assembly.
+
+        This means that the two packages below must be aligned with the "build" version number of
+        the "Microsoft.Windows.SDK.BuildTools" package above, and the "revision" version number
+        must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
+        -->
+				<!-- <WindowsSdkPackageVersion>10.0.22621.28</WindowsSdkPackageVersion> -->
+			</PropertyGroup>
+			<ItemGroup>
+				<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.231008000" />
+				<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<Content Include="Assets\**;**/*.png;**/*.bmp;**/*.jpg;**/*.dds;**/*.tif;**/*.tga;**/*.gif" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);**\*.svg" />
+				<Page Include="**\*.xaml" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+				<Compile Update="**\*.xaml.cs">
+					<DependentUpon>%(Filename)</DependentUpon>
+				</Compile>
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
+	<ItemGroup>
+		<UpToDateCheckInput Remove="Presentation\AboutPage.xaml" />
+		<UpToDateCheckInput Remove="Presentation\AboutPage.xaml" />
+		<UpToDateCheckInput Remove="Presentation\AboutPage.xaml" />
+		<UpToDateCheckInput Remove="Presentation\AboutPage.xaml" />
+		<UpToDateCheckInput Remove="Presentation\AboutPage.xaml" />
+	</ItemGroup>
+	<ItemGroup>
+		<UnoImage Include="Assets\**\*.svg" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\ToDoApp\ToDoApp.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="Services\" />
+		<None Remove="Assets\Images\" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Services\" />
+		<Folder Include="Assets\Images\" />
+	</ItemGroup>
+</Project>
