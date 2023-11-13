@@ -30,8 +30,7 @@ public class NavigationService : INavigationService
         {
             return parameters is null? Shell.Current.GoToAsync($"/{name}"): Shell.Current.GoToAsync($"/{name}",new ShellNavigationQueryParameters(parameters));
         }
-        //TODO
-        return Task.CompletedTask;
+        throw new Exception("Navigation failed!");
     }
 }
 
