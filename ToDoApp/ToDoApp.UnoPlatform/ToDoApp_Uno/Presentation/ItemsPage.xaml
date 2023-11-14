@@ -5,7 +5,6 @@
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
        xmlns:utu="using:Uno.Extensions.Reactive.UI"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
       <ListView
                 Grid.Row="1"
                 ItemsSource="{Binding Items}"

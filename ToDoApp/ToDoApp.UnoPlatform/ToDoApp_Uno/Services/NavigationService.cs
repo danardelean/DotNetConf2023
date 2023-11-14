@@ -19,7 +19,6 @@ public class NavigationService : INavigationService
     public Task NavigateAsync(string name)
     {
         return Navigator.NavigateRouteAsync(this, $"{name}");
-        throw new NotImplementedException();
     }
 
     public async Task NavigateAsync(string name, IDictionary<string, object> parameters)

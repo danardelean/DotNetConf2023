@@ -22,15 +22,17 @@ public class NavigationService : INavigationService
 
     public Task NavigateAsync(string name, IDictionary<string, object> parameters)
     {
-        if (name == "Login")
-            Application.Current.MainPage = _serviceProvider.GetService<LoginPage>();
-        else if (name=="Main")
-            Application.Current.MainPage = _serviceProvider.GetService<ToDoApp.AppShell>();
-        else
+        switch(name)
         {
-            return parameters is null? Shell.Current.GoToAsync($"/{name}"): Shell.Current.GoToAsync($"/{name}",new ShellNavigationQueryParameters(parameters));
-        }
-        throw new Exception("Navigation failed!");
+            case "Login":
+                Application.Current.MainPage = _serviceProvider.GetService<LoginPage>();
+                return Task.CompletedTask;
+            case "Main":
+                Application.Current.MainPage = _serviceProvider.GetService<ToDoApp.AppShell>();
+                return Task.CompletedTask;
+            default:
+                return parameters is null ? Shell.Current.GoToAsync($"/{name}") : Shell.Current.GoToAsync($"/{name}", new ShellNavigationQueryParameters(parameters));
+        };
     }
 }
 
