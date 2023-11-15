@@ -25,16 +25,19 @@
   <PropertyGroup Condition="'$(TargetFramework)|$(Platform)'=='net8.0-android|AnyCPU'">
     <AndroidManifest>Android\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
+    <CreatePackage>false</CreatePackage>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Uno.Resizetizer" Version="1.2.0" />
-    <PackageReference Include="Uno.WinUI" Version="5.0.31" />
+    <PackageReference Include="Uno.WinUI" Version="5.0.41" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="3.0.11" />
     <PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="3.0.11" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0-rc.2.23479.6" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
     <PackageReference Include="Uno.Extensions.Logging.OSLog" Version="1.7.0" />
-    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="5.0.31" />
-    <PackageReference Include="Uno.WinUI.DevServer" Version="5.0.31" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="5.0.41" />
+    <PackageReference Include="Uno.WinUI.DevServer" Version="5.0.41" Condition="'$(Configuration)'=='Debug'" />
   </ItemGroup>
   <Choose>
     <When Condition="$(IsAndroid)">
